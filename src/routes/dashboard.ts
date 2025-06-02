@@ -489,10 +489,10 @@ dashboard.post(
               exclude: game.exclude || '',
               name: game.name,
               partner: game.partner,
-              thumbnail: `https://${process.env.AWS_BUCKET}.s3.ap-southeast-2.amazonaws.com/${id}/thumbnail.png`,
+              thumbnail: `https://${process.env.AWS_BUCKET}.syd1.cdn.digitaloceanspaces.com/${id}/thumbnail.png`,
               featured: false,
               ...(files.banner && {
-                banner: `https://${process.env.AWS_BUCKET}.s3.ap-southeast-2.amazonaws.com/${id}/banner.png`,
+                banner: `https://${process.env.AWS_BUCKET}.syd1.cdn.digitaloceanspaces.com/${id}/banner.png`,
               }),
               educational: game.educational || false,
               approved: false,
@@ -513,16 +513,16 @@ dashboard.post(
                 createdAt: Date.now(),
                 ...(files.game
                   ? {
-                      url: `https://${process.env.AWS_BUCKET}.s3.ap-southeast-2.amazonaws.com/${id}/game/index.html`,
+                      url: `https://${process.env.AWS_BUCKET}.syd1.cdn.digitaloceanspaces.com/${id}/game/index.html`,
                       isGameExternal: false,
                     }
                   : {
                       url: game.url,
                       isGameExternal: true,
                     }),
-                thumbnail: `https://${process.env.AWS_BUCKET}.s3.ap-southeast-2.amazonaws.com/${id}/thumbnail.png`,
+                thumbnail: `https://${process.env.AWS_BUCKET}.syd1.cdn.digitaloceanspaces.com/${id}/thumbnail.png`,
                 ...(files.banner && {
-                  screenshot: `https://${process.env.AWS_BUCKET}.s3.ap-southeast-2.amazonaws.com/${id}/banner.png`,
+                  screenshot: `https://${process.env.AWS_BUCKET}.syd1.cdn.digitaloceanspaces.com/${id}/banner.png`,
                 }),
               })
           })(),
@@ -606,7 +606,7 @@ dashboard.patch(
               updatedAt: Date.now(),
               ...(files.game
                 ? {
-                    url: `https://${process.env.AWS_BUCKET}.s3.ap-southeast-2.amazonaws.com/${req.params.gameID}/game/index.html`,
+                    url: `https://${process.env.AWS_BUCKET}.syd1.cdn.digitaloceanspaces.com/${req.params.gameID}/game/index.html`,
                     isGameExternal: false,
                   }
                 : {
@@ -614,7 +614,7 @@ dashboard.patch(
                     isGameExternal: true,
                   }),
               ...(files.banner && {
-                screenshot: `https://${process.env.AWS_BUCKET}.s3.ap-southeast-2.amazonaws.com/${req.params.gameID}/banner.png`,
+                screenshot: `https://${process.env.AWS_BUCKET}.syd1.cdn.digitaloceanspaces.com/${req.params.gameID}/banner.png`,
               }),
             })
           })(),
@@ -639,11 +639,11 @@ dashboard.patch(
             item.playableOnHeihei = gameChanges.playableOnHeihei
 
             if (files.thumbnail) {
-              item.thumbnail = `https://${process.env.AWS_BUCKET}.s3.ap-southeast-2.amazonaws.com/${req.params.gameID}/thumbnail.png`
+              item.thumbnail = `https://${process.env.AWS_BUCKET}.syd1.cdn.digitaloceanspaces.com/${req.params.gameID}/thumbnail.png`
             }
 
             if (files.banner) {
-              item.banner = `https://${process.env.AWS_BUCKET}.s3.ap-southeast-2.amazonaws.com/${req.params.gameID}/banner.png`
+              item.banner = `https://${process.env.AWS_BUCKET}.syd1.cdn.digitaloceanspaces.com/${req.params.gameID}/banner.png`
             }
 
             await doc.ref.set(data)

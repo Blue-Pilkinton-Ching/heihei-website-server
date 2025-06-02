@@ -22,6 +22,7 @@ export async function uploadFile(
       Bucket,
       Key,
       ContentType,
+      ACL: 'public-read',
     })
 
     // Step 2: Split the file into parts and upload each part
